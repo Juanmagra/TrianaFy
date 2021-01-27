@@ -13,7 +13,7 @@ passport.use(new LocalStrategy({
     usernameField: "username",
     passwordField: "password",
     session: false
-},(username, password, done)=> {
+}, (username, password, done) => {
     const user = userRepository.findByUsername(username);
     if (user == undefined)
         return done(null, false); // El usuario no existe
@@ -29,12 +29,12 @@ passport.use(new LocalStrategy({
  * Estrategia de autenticación basada en Token
  */
 const opts = {
-    jwtFromRequest : ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey : process.env.JWT_SECRET,
-    algorithms : [process.env.JWT_ALGORITHM]
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: process.env.JWT_SECRET,
+    algorithms: [process.env.JWT_ALGORITHM]
 };
 
-passport.use('token', new JwtStrategy(opts, (jwt_payload, done)=>{
+passport.use('token', new JwtStrategy(opts, (jwt_payload, done) => {
 
     // Extraemos el id del campo sub del payload
     const user_id = jwt_payload.sub;
@@ -49,12 +49,12 @@ passport.use('token', new JwtStrategy(opts, (jwt_payload, done)=>{
 }));
 
 export const password = () => (req, res, next) =>
-    passport.authenticate('local', {session: false}, (err, user, info) => {
+    passport.authenticate('local', { session: false }, (err, user, info) => {
         if (err)
             return res.status(400).json(err)
         else if (err || !user)
             return res.status(401).end()
-        
+
         req.logIn(user, { session: false }, (err) => {
             if (err) return res.status(401).end()
             next()
@@ -64,14 +64,14 @@ export const password = () => (req, res, next) =>
 
 export const token = () => (req, res, next) =>
     passport.authenticate('token', { session: false }, (err, user, info) => {
-    if (err ||  !user) {
-        return res.status(401).end()
-    }
-    req.logIn(user, { session: false }, (err) => {
-        if (err) return res.status(401).end()
-        next()
-    })
-})(req, res, next);
+        if (err || !user) {
+            return res.status(401).end()
+        }
+        req.logIn(user, { session: false }, (err) => {
+            if (err) return res.status(401).end()
+            next()
+        })
+    })(req, res, next);
 
 
 export default passport;

@@ -1,13 +1,13 @@
-class PlayList {
-    constructor(nombre, descripcion, userId, songsList = [], id = 0) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.userId = userId;
-        this.songsList = songsList;
-
-    }
-}
+import 'dotenv/config';
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+const playListSchema = new Schema({
+    nombre: String,
+    descripcion: String,
+    userId: String,
+    songsList: [String]
+});
+const PlayList = mongoose.model('PlayList', playListSchema);
 export {
     PlayList
 }

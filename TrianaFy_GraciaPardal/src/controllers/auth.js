@@ -13,7 +13,7 @@ const AuthController = {
 
 
         let usuarioCreado = userRepository.create(
-            new User(req.body.username, req.body.email, 
+            new User(req.body.username, req.body.email, req.body.fullname, 
                         bcrypt.hashSync(req.body.password, parseInt(process.env.BCRYPT_ROUNDS))));
 
         // Devolvemos todos los datos del usuario menos la contraseña                

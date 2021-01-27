@@ -1,12 +1,15 @@
-class Song {
-    constructor(title, artist, album, year, id =0){
-        this.id = id;
-        this.title = title;
-        this.artist = artist;
-        this.album = album;
-        this.year = year;
+import 'dotenv/config';
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
-    }
-}
-export {Song}
-    
+const songSchema = new Schema({
+    title: String,
+    artist: String,
+    album: String,
+    year: Date
+
+});
+
+const Song = mongoose.model('Song', songSchema);
+
+export { Song }

@@ -9,6 +9,7 @@ const userSchema = new Schema({
   email: String,
   password: String
 });
+const User = mongoose.model('User', userSchema);
 
 const emailExists = async (email) => {
   const result = await User.countDocuments({ email: email }).exec();
@@ -29,35 +30,37 @@ const userRepository = {
 
   async create(newUser) {
     const theUser = new User({
+      fullname: newUser.fullname,
       username: newUser.username,
-      email: newUser.email
+      email: newUser.email,
+      password: newUser.password
+
     });
     const result = await theUser.save();
     return result;
   },
 
   async updateById(id, modifiedUser) {
-    const posicionEncontrado = indexOfPorId(id)
-    if (posicionEncontrado != -1) {
-      users[posicionEncontrado].username = modifiedUser.username;
-    }
-    return posicionEncontrado != -1 ? users[posicionEncontrado] : undefined;
-  },
 
-  async update(modifiedUser) {
+    const userSaved = await User.findById(id);
+
+    if (userSaved != null) {
+      return await Object.assign(userSaved, modifiedUser).save();
+    } else
+      return undefined;
+  },
+  update(modifiedUser) {
     return this.updateById(modifiedUser.id, modifiedUser);
   },
   async delete(id) {
-    const posicionEncontrado = indexOfPorId(id);
-    if (posicionEncontrado != -1)
-      users.splice(posicionEncontrado, 1);
+    await User.findByIdAndRemove(id).exec();
   }
 
 }
 
 
 export {
-  userSchema,
+  User,
   userRepository,
   emailExists
 }
