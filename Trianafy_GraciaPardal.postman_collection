@@ -1,0 +1,346 @@
+{
+	"info": {
+		"_postman_id": "3acf0976-d75f-45af-91de-ba6c269f916c",
+		"name": "Trianafy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/users",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PlayLists",
+			"item": [
+				{
+					"name": "Create List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/lists",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All lists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/lists",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"lists"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/list/{id}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"list",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit List",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/list/{id}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"list",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete List",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/list/{id}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"list",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Song to List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/lists/{id1}/songs/{id2}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"lists",
+								"{id1}",
+								"songs",
+								"{id2}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Songs from List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/lists/{id}/songs",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"lists",
+								"{id}",
+								"songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Song from List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/list/{id1}/songs/{id2}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"list",
+								"{id1}",
+								"songs",
+								"{id2}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Song from List",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/list/{id1}/songs/{id2}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"list",
+								"{id1}",
+								"songs",
+								"{id2}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Songs",
+			"item": [
+				{
+					"name": "Create Song",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/songs",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All songs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/songs",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"songs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Song by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/songs/{id}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"songs",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Song",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/songs/{id}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"songs",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Song",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/songs/{id}",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"songs",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Seguridad",
+			"item": [
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"lmlopezmagaña\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
