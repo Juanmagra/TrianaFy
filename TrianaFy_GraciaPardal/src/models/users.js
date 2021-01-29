@@ -13,6 +13,7 @@ const User = mongoose.model('User', userSchema);
 
 const emailExists = async (email) => {
   const result = await User.countDocuments({ email: email }).exec();
+  console.log(result > 0);
   return result > 0;
 
 }
@@ -25,6 +26,10 @@ const userRepository = {
   },
   async findById(id) {
     const result = await User.findById(id).exec();
+    return result != null ? result : undefined;
+  },
+  async findByUserName(username) {
+    const result = await User.findOne({ username: username }).exec();
     return result != null ? result : undefined;
   },
 
@@ -45,7 +50,9 @@ const userRepository = {
     const userSaved = await User.findById(id);
 
     if (userSaved != null) {
-      return await Object.assign(userSaved, modifiedUser).save();
+      console.log(id);
+      return Object.assign(userSaved, modifiedUser).save();
+
     } else
       return undefined;
   },
@@ -53,7 +60,8 @@ const userRepository = {
     return this.updateById(modifiedUser.id, modifiedUser);
   },
   async delete(id) {
-    await User.findByIdAndRemove(id).exec();
+  
+      await User.findByIdAndDelete(id).exec();
   }
 
 }

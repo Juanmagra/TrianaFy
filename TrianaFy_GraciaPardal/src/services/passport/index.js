@@ -9,18 +9,18 @@ import bcrypt from 'bcryptjs';
 /**
  * Estrategia de autenticación local (con username y password)
  */
-passport.use(new LocalStrategy({
+ passport.use(new LocalStrategy({
     usernameField: "username",
     passwordField: "password",
     session: false
-}, (username, password, done) => {
-    const user = userRepository.findByUsername(username);
+}, async (username, password, done) => {
+    const user = await userRepository.findByUserName(username);
     if (user == undefined)
         return done(null, false); // El usuario no existe
     else if (!bcrypt.compareSync(password, user.password))
         return done(null, false); // No coincide la contraseña
     else
-        return done(null, user.toDto());
+        return done(null, user);
 
 }));
 
@@ -34,13 +34,13 @@ const opts = {
     algorithms: [process.env.JWT_ALGORITHM]
 };
 
-passport.use('token', new JwtStrategy(opts, (jwt_payload, done) => {
+passport.use('token', new JwtStrategy(opts, async (jwt_payload, done) => {
 
     // Extraemos el id del campo sub del payload
     const user_id = jwt_payload.sub;
 
     // Buscamos el usuario por ID
-    const user = userRepository.findById(user_id);
+    const user = await userRepository.findById(user_id);
     if (user == undefined)
         return done(null, false); // No existe el usuario
     else

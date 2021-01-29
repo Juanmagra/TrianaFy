@@ -3,20 +3,18 @@ import { UserController } from '../controllers/user';
 import { param, body } from 'express-validator';
 import { validar } from '../middlewares/validacion'
 import { emailExists } from '../models/users'
+import { token } from '../services/passport';
+
 
 const router = Router();
 
-router.get('/', UserController.todosLosUsuarios)
+router.get('/', token(), UserController.todosLosUsuarios);
 
-router.get('/me', UserController.me);
-
-router.get('/:id', [
-    param('id').isInt().withMessage('ID debe ser un número entero')
-],
+router.get('/:id', token(),
     validar,
     UserController.usuarioPorId);
 
-router.post('/', [
+router.post('/', token(), [
     body('username').isLength({ min: 5 }).withMessage('La longitud mínima del nombre de usuario son 5 caracteres'),
     body('email')
         .isEmail()
@@ -33,8 +31,8 @@ router.post('/', [
     validar,
     UserController.nuevoUsuario);
 
-router.put('/:id', UserController.editarUsuario);
+router.put('/:id', token(), UserController.editarUsuario);
 
-router.delete('/:id', UserController.eliminarUsuario);
+router.delete('/:id', token(), UserController.eliminarUsuario);
 
 export default router;

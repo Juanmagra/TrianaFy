@@ -12,4 +12,46 @@ const songSchema = new Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-export { Song }
+const songRepository = {
+    async findAll(){
+        const result = await Song.find({}).exec();
+        return result;
+    },
+    async findById(id) {
+        const result = await Song.findById(id).exec();
+        return result != null ? result : undefined;
+    },
+    async findByTitle(title){
+        const result = await Song.findOne({title:title}).exec();
+        return result != null ? result : undefined;
+    },
+    async create(newSong){
+        const song = new Song({
+            title: newSong.title,
+            artist: newSong. artist,
+            album: newSong.album,
+            year : newSong. year
+        });
+        const result = await song.save();
+        return result;
+    },
+    async updateById(id, cancionModificada){
+        const cancionGuardada = await Song.findById(id);
+
+        if (cancionGuardada != null) {
+            return Object.assign(cancionGuardada, cancionModificada).save();
+            
+        } else {
+            return undefined;
+        }
+
+    },
+    async delete (id){
+        await Song.findOneAndDelete(id).exec();
+    }
+
+}
+export {
+    Song,
+    songRepository
+}

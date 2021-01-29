@@ -34,30 +34,10 @@ morganBody(app);
 app.use(passport.initialize());
 
 
-/*
-  Este middleware nos permite añadir alguna información al contexto de cada petición,
-  y por tanto, lo tendremos disponible en cualquier objeto req que recibamos en cualquier
-  petición de la aplicación
-*/
-app.use((req, res, next) => {
-  // Para cualquier petición, añadimos en su contexto
-  req.context = {
-    // Todos los modelos
-    models,
-    // El "usuario actual". Ahora mismo simula que hayamos hecho un login
-    // Más adelante, lo podremos conseguir de otra forma.
-    me: models.users.userRepository.findById(1)
-  };
-  next();
-});
-
-
-
-
-
 // Configuración de las rutas.
 app.use('/users', routes.user);
-app.use('/auth', routes.auth)
+app.use('/auth', routes.auth);
+app.use('/songs', routes.song);
 
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
