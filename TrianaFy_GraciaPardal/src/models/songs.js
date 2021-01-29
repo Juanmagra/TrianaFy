@@ -37,8 +37,9 @@ const songRepository = {
     },
     async updateById(id, cancionModificada){
         const cancionGuardada = await Song.findById(id);
-
+        console.log(cancionGuardada);
         if (cancionGuardada != null) {
+            console.log(cancionModificada);
             return Object.assign(cancionGuardada, cancionModificada).save();
             
         } else {

@@ -376,7 +376,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmNiYjQxMDkxYzAwZjQ2MDA2YWEiLCJpYXQiOjE2MTE5MzQ5MzgsImV4cCI6MTYxMjAyMTMzOH0.bIFbtZLa4sMgBK5sci7OWzJt08prpV2eEi1FmjtLuc0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTE5NTIzMzAsImV4cCI6MTYxMjAzODczMH0.w4S7_9FN5hyRFi77n6DHd0fq4GRqj27e0lMpQ2MFzTw",
 									"type": "string"
 								}
 							]
@@ -398,16 +398,26 @@
 				{
 					"name": "Get Song by ID",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTE5NTIzMzAsImV4cCI6MTYxMjAzODczMH0.w4S7_9FN5hyRFi77n6DHd0fq4GRqj27e0lMpQ2MFzTw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/songs/{id}",
+							"raw": "{{BASE_URL}}/songs/60143db50cd78c04080b16ea",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"songs",
-								"{id}"
+								"60143db50cd78c04080b16ea"
 							]
 						}
 					},
@@ -416,16 +426,35 @@
 				{
 					"name": "Edit Song",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTE5NTIzMzAsImV4cCI6MTYxMjAzODczMH0.w4S7_9FN5hyRFi77n6DHd0fq4GRqj27e0lMpQ2MFzTw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Partiendo la pana 2.0\",\r\n    \"artist\": \"Estopa\",\r\n    \"album\": \"Destrangis\",\r\n    \"year\": \"978310800\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{BASE_URL}}/songs/{id}",
+							"raw": "{{BASE_URL}}/songs/60143db50cd78c04080b16ea",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"songs",
-								"{id}"
+								"60143db50cd78c04080b16ea"
 							]
 						}
 					},
@@ -434,16 +463,26 @@
 				{
 					"name": "Delete Song",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTE5NTIzMzAsImV4cCI6MTYxMjAzODczMH0.w4S7_9FN5hyRFi77n6DHd0fq4GRqj27e0lMpQ2MFzTw",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/songs/{id}",
+							"raw": "{{BASE_URL}}/songs/60143db50cd78c04080b16ea",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"songs",
-								"{id}"
+								"60143db50cd78c04080b16ea"
 							]
 						}
 					},
