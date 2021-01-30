@@ -38,6 +38,7 @@ app.use(passport.initialize());
 app.use('/users', routes.user);
 app.use('/auth', routes.auth);
 app.use('/songs', routes.song);
+app.use('/lists', routes.playlist);
 
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {

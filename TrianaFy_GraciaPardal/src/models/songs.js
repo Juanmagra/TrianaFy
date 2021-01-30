@@ -21,10 +21,6 @@ const songRepository = {
         const result = await Song.findById(id).exec();
         return result != null ? result : undefined;
     },
-    async findByTitle(title){
-        const result = await Song.findOne({title:title}).exec();
-        return result != null ? result : undefined;
-    },
     async create(newSong){
         const song = new Song({
             title: newSong.title,
