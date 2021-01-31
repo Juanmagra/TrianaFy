@@ -44,6 +44,37 @@ const PlayListController = {
     eliminarPlayList: async (req,res)=>{
         let platList = await playListRepository.delete(req.params.id);
         res.sendStatus(204);
+    },
+    todasLasCancionesDeUnaPlayList: async (req, res )=>{
+        let songList = await playListRepository.songListFromPlayList(req.params.id);
+        if (songList == undefined) {
+            res.sendStatus(404);
+            
+        } else {
+            res.status(200).json(songList);
+        }
+    },
+    añadirCancionToPlayList: async(req, res)=>{
+        let playList = await playListRepository.addSongToPlayList(req.params.idSong, req.params.idPlayList);
+        if (playList == undefined) {
+            res.sendStatus(404);
+            
+        } else {
+            res.status(200).json(playList.songsList);
+        }
+    },
+    cancionDePlayList: async (req, res) =>{
+        let song = await playListRepository.oneSongFromPlayList(req.params.idSong, req.params.idPlayList);
+        if (song == undefined) {
+            res.sendStatus(404);
+            
+        } else {
+            res.status(200).json(song);
+        }
+    },
+    eliminarCancionDePlayList: async (req, res) =>{
+        let playList = await playListRepository.delSongFromPlayList(req.params.idSong, req.params.idPlayList);
+        res.sendStatus(204);
     }
 }
 export {

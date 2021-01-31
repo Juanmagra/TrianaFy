@@ -168,7 +168,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTIwMjAzODQsImV4cCI6MTYxMjEwNjc4NH0.fIWiPb1fqjMvbqErBrZ0D45u08ik_ACl2IMnd_a0kkM",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTIxMDEwOTUsImV4cCI6MTYxMjE4NzQ5NX0.EQ-ph1Q0g2jO3D6mN5HvJdagCFsG5Bzb1U7dMEPpsvo",
 									"type": "string"
 								}
 							]
@@ -319,18 +319,28 @@
 				{
 					"name": "Add Song to List",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTIxMDEwOTUsImV4cCI6MTYxMjE4NzQ5NX0.EQ-ph1Q0g2jO3D6mN5HvJdagCFsG5Bzb1U7dMEPpsvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/lists/{id1}/songs/{id2}",
+							"raw": "{{BASE_URL}}/lists/601470e12f4b6811e820ab6a/songs/6016e03a11c832179843bdf3",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"lists",
-								"{id1}",
+								"601470e12f4b6811e820ab6a",
 								"songs",
-								"{id2}"
+								"6016e03a11c832179843bdf3"
 							]
 						}
 					},
@@ -339,16 +349,26 @@
 				{
 					"name": "Get All Songs from List",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTIxMDEwOTUsImV4cCI6MTYxMjE4NzQ5NX0.EQ-ph1Q0g2jO3D6mN5HvJdagCFsG5Bzb1U7dMEPpsvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/lists/{id}/songs",
+							"raw": "{{BASE_URL}}/lists/6016c34fbba71e2b9cd36455/songs",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"lists",
-								"{id}",
+								"6016c34fbba71e2b9cd36455",
 								"songs"
 							]
 						}
@@ -358,18 +378,28 @@
 				{
 					"name": "Get Song from List",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTIxMDEwOTUsImV4cCI6MTYxMjE4NzQ5NX0.EQ-ph1Q0g2jO3D6mN5HvJdagCFsG5Bzb1U7dMEPpsvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/list/{id1}/songs/{id2}",
+							"raw": "{{BASE_URL}}/lists/601470e12f4b6811e820ab6a/songs/6016c34fbba71e2b9cd36455",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"list",
-								"{id1}",
+								"lists",
+								"601470e12f4b6811e820ab6a",
 								"songs",
-								"{id2}"
+								"6016c34fbba71e2b9cd36455"
 							]
 						}
 					},
@@ -378,18 +408,28 @@
 				{
 					"name": "Delete Song from List",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDE0MmJjODA1NWY1NzI2NjgwYWJjNDEiLCJpYXQiOjE2MTIxMDEwOTUsImV4cCI6MTYxMjE4NzQ5NX0.EQ-ph1Q0g2jO3D6mN5HvJdagCFsG5Bzb1U7dMEPpsvo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{BASE_URL}}/list/{id1}/songs/{id2}",
+							"raw": "{{BASE_URL}}/lists/601470e12f4b6811e820ab6a/songs/6016e03a11c832179843bdf3",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"list",
-								"{id1}",
+								"lists",
+								"601470e12f4b6811e820ab6a",
 								"songs",
-								"{id2}"
+								"6016e03a11c832179843bdf3"
 							]
 						}
 					},

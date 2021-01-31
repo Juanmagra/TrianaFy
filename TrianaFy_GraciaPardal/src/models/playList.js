@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import mongoose from 'mongoose';
+import { songRepository } from './songs';
 const { Schema } = mongoose;
 const playListSchema = new Schema({
     nombre: String,
@@ -42,6 +43,58 @@ const playListRepository = {
     async delete(id) {
         await PlayList.findOneAndDelete(id).exec();
 
+    },
+    async songListFromPlayList(id) {
+        let playList = await PlayList.findById(id);
+        return playList != null ? playList.songsList : undefined;
+
+    },
+    async oneSongFromPlayList(idSong, idPlayList) {
+        let playList = await PlayList.findById(idPlayList);
+        if (playList == null) {
+            return undefined;
+        } else {
+            let songList = playList.songsList;
+            let song = songList.filter(song => song == idSong);
+            if (song == null) {
+                return undefined;
+            } else {
+                return song[0];
+            }
+        }
+    },
+    async addSongToPlayList(idSong, idPlayList) {
+        let playList = await PlayList.findById(idPlayList);
+        if (playList == null) {
+            return undefined;
+        } else {
+            let song = await songRepository.findById(idSong);
+            if (song == null) {
+                return undefined;
+            } else {
+                playList.songsList.push(idSong);
+                return await playList.save();
+            }
+
+        }
+    },
+    async delSongFromPlayList(idSong, idPlayList){
+        let playList = await PlayList.findById(idPlayList);
+        if (playList == null) {
+            return undefined;
+            
+        } else {
+            let song  = await songRepository.findById(idSong);
+            if (song == null) {
+                return undefined;
+                
+            } else {
+                playList.songsList.pull(idSong);
+                return await playList.save();
+            }
+
+            
+        }
     }
 
 }
