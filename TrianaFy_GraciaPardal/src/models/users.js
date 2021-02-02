@@ -7,7 +7,14 @@ const userSchema = new Schema({
   fullname: String,
   username: String,
   email: String,
-  password: String
+  password:{
+    type: String,
+        validate: [
+        function(password){
+            return password.length >= 6;
+        },
+        'El password deberia de ser mas largo ']
+    }
 });
 const User = mongoose.model('User', userSchema);
 

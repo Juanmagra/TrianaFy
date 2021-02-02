@@ -9,11 +9,10 @@ const router = Router();
 //Ver todas las canciones existentes
 router.get('/', token(), SongController.todasLasCanciones);
 //Ver la informacion de una canción seleccionada
-router.get('/:id',
-    validar, SongController.cancionPorId);
+router.get('/:id',token(), SongController.cancionPorId);
 //Post
 //Añade una nueva canción.
-router.post('/', [
+router.post('/',token(), [
     body('title')
                 .isLength({min:6}).withMessage('Longitud de titulo minima de 6 caracteres.')
                 .exists().withMessage('El campo title es requerido.')
@@ -30,10 +29,10 @@ router.post('/', [
     validar, SongController.nuevaCancion);
 // Put
 // Modificar el contenido de una canción
-router.put('/:id', SongController.editarCancion);
+router.put('/:id',token(), SongController.editarCancion);
 
 //Delete
 //Borrar una canción
-router.delete('/:id', SongController.eliminarCancion);
+router.delete('/:id', token(),SongController.eliminarCancion);
 
 export default router;

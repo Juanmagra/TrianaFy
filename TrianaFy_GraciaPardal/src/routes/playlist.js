@@ -13,18 +13,17 @@ const router = Router();
 router.get('/', token(), PlayListController.todasLasPlayList);
 
 //Ver la información de una lista de reproducción seleccionada
-router.get('/:id',
-    validar, PlayListController.playListPorId);
+router.get('/:id',token(), PlayListController.playListPorId);
 
 //Ver todas las canciones de una lista de reproducción existente
-router.get('/:id/songs', [], validar, PlayListController.todasLasCancionesDeUnaPlayList);
+router.get('/:id/songs', token(), PlayListController.todasLasCancionesDeUnaPlayList);
 
 //Ver una canción de una lista de reproducción.
-router.get('/:idSong/songs/:idPlayList', [], validar, PlayListController.cancionDePlayList);
+router.get('/:idSong/songs/:idPlayList', token(), PlayListController.cancionDePlayList);
 /*=================================================*/
 
 //Añade una nueva lista de reproducción
-router.post('/', [
+router.post('/', token(),[
     body('nombre')
         .exists().withMessage('El campo nombre es requerido')
         .not().isEmpty().withMessage('El campo nombre no puede estar vacio'),
@@ -36,17 +35,17 @@ router.post('/', [
     validar, PlayListController.nuevaPlayList);
 
 //Añade una canción existente a una lista de reproducción.
-router.post('/:idSong/songs/:idPlayList', [], validar, PlayListController.añadirCancionToPlayList);
+router.post('/:idSong/songs/:idPlayList', token(), PlayListController.añadirCancionToPlayList);
 /*=================================================*/
 
 //Modificar el contenido de una lista de reproducción
-router.put('/:id', PlayListController.editarPlayList);
+router.put('/:id', token(), PlayListController.editarPlayList);
 /*=================================================*/
 
 //Borrar una lista de reproducción
-router.delete('/:id', PlayListController.eliminarPlayList);
+router.delete('/:id', token(), PlayListController.eliminarPlayList);
 
 //Borrar una canción de una lista de reproducción
-router.delete('/:idSong/songs/:idPlayList', PlayListController.eliminarCancionDePlayList);
+router.delete('/:idSong/songs/:idPlayList',token(), PlayListController.eliminarCancionDePlayList);
 
 export default router;

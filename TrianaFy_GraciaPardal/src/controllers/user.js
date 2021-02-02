@@ -23,12 +23,6 @@ const UserController = {
         }
 
     },
-
-    nuevoUsuario: async (req, res) => {
-        let usuarioCreado = await userRepository.create(new User(req.body.username, req.body.email));
-        res.status(201).json(usuarioCreado);
-    },
-
     editarUsuario: async (req, res) => {
 
         let usuarioModificado = await userRepository.updateById(req.params.id,
@@ -36,7 +30,6 @@ const UserController = {
                 username: req.body.username,
                 email: req.body.email,
                 fullname: req.body.fullname,
-                password: bcrypt.hashSync(req.body.password, parseInt(process.env.BCRYPT_ROUNDS))
             });
         if (usuarioModificado == undefined)
             res.sendStatus(404);
@@ -48,10 +41,8 @@ const UserController = {
         let user = await userRepository.delete(req.params.id);
       
             res.sendStatus(204);
-        
        
     }
-
 
 };
 
